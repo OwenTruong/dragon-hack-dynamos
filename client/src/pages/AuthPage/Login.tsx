@@ -30,8 +30,8 @@ const validateLogin = (loginField: LoginField): boolean => {
 
 const getAccount = async (email: string, password: string): Promise<void> => {
   // TODO: if result in an error,
-  // TODO: should login be get, post or patch?
-  // const result = await instance.get('/login', {
+  // TODO: should signup be get, post or patch?
+  // const result = await instance.get('/signup', {
   //   email,
   //   password,
   // });
