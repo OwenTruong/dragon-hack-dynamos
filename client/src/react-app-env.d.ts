@@ -10,7 +10,7 @@ interface Pet {
   adoptionProcess: string;
   species: string;
   breed: string | undefined;
-  age: number;
+  birthDate: Date;
   petImageUrl: string;
   qrUrl: string | undefined;
   createdAt: Date;
@@ -20,12 +20,13 @@ interface Pet {
 
 interface AdoptionCenter {
   adoptCenterId: number;
+  name: string;
   email: string;
   password: string;
   phone: string;
   websiteURL: string | undefined;
-  createdAt: string;
-  updatedAt: string;
+  createdAt: Date;
+  updatedAt: Date;
 }
 
 interface Adopter {

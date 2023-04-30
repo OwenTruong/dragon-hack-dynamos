@@ -2,10 +2,11 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { Container, ThemeProvider, createTheme } from '@mui/material';
 import React, { useContext, useState } from 'react';
 
-import { PostsPage } from 'pages/PostsPage';
+import { PostsPage } from 'pages/PostsPage/PostsPage';
 import { AuthPage } from 'pages/AuthPage/AuthPage';
 import { ShelterRequestPage } from 'pages/ShelterRequestPage';
 import { ShelterAuthPage } from 'pages/ShelterAuthPage';
+import { PostPage } from 'pages/PostPage/PostPage';
 
 // TODO: zoom embed
 // TODO: twilio messaging with calendar
@@ -44,10 +45,7 @@ export function App(): JSX.Element {
               path="/shelter/login"
               element={<ShelterAuthPage mode="login" />}
             />
-            <Route
-              path="/shelter/signup"
-              element={<ShelterAuthPage mode="signup" />}
-            />
+            <Route path="/post" element={<PostPage />} />
           </Routes>
         </Router>
       </ThemeProvider>

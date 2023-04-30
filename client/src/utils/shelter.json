@@ -1,0 +1,34 @@
+{
+  "shelter": [
+    {
+      "adoptCenterId": 2,
+      "name": "Jerry's Shelter",
+      "email": "info@adoptme.com",
+      "password": "password123",
+      "phone": "5555555555",
+      "websiteURL": "https://www.adoptme.com",
+      "createdAt": "2022-01-01T00:00:00.000Z",
+      "updatedAt": "2022-01-01T00:00:00.000Z"
+    },
+    {
+      "adoptCenterId": 3,
+      "name": "Penn Shelter",
+      "email": "rescue@paws.org",
+      "password": "mydogismyhero",
+      "phone": "5551234567",
+      "websiteURL": "https://www.paws.org",
+      "createdAt": "2022-02-01T00:00:00.000Z",
+      "updatedAt": "2022-02-01T00:00:00.000Z"
+    },
+    {
+      "adoptCenterId": 3,
+      "name": "Jersey City Adoption Center",
+      "email": "info@furryfriends.net",
+      "password": "lovemycat",
+      "phone": "+1-555-987-6543",
+      "websiteURL": "https://www.paws.org",
+      "createdAt": "2022-03-01T00:00:00.000Z",
+      "updatedAt": "2022-03-01T00:00:00.000Z"
+    }
+  ]
+}
