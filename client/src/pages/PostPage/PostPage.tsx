@@ -74,8 +74,8 @@ export function PostPage(): JSX.Element {
   return (
     <Container
       sx={{
-        backgroundColor: theme.palette.secondary.light,
-        borderRadius: 5,
+        backgroundColor: theme.palette.secondary.dark,
+        borderRadius: 3,
         padding: 3,
         position: 'relative',
       }}
@@ -163,7 +163,7 @@ export function PostPage(): JSX.Element {
               </Link>
             </Grid>
             <Grid item>
-              <Button>Make Appointment</Button>
+              <Button variant="outlined">Make Appointment</Button>
             </Grid>
           </Grid>
         </Grid>

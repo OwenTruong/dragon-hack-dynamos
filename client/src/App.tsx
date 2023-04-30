@@ -6,6 +6,8 @@ import { PostsPage } from 'pages/PostsPage/PostsPage';
 import { AuthPage } from 'pages/AuthPage/AuthPage';
 import { ShelterAuthPage } from 'pages/ShelterAuthPage/ShelterAuthPage';
 import { PostPage } from 'pages/PostPage/PostPage';
+import { CreatePage } from 'pages/CreatePage/CreatePage';
+import { DashboardPage } from 'pages/DashboardPage/DashboardPage';
 
 // TODO: zoom embed
 // TODO: twilio messaging with calendar
@@ -48,6 +50,8 @@ export function App(): JSX.Element {
               element={<ShelterAuthPage mode="login" />}
             />
             <Route path="/post" element={<PostPage />} />
+            <Route path="/shelter/create" element={<CreatePage />} />
+            <Route path="/shelter/" element={<DashboardPage />} />
           </Routes>
         </Router>
       </ThemeProvider>
