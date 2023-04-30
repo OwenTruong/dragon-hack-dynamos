@@ -1,6 +1,8 @@
 import React from 'react';
 
-export function AuthPage(): JSX.Element {
+type AuthType = 'signup' | 'login';
+
+export function ShelterAuthPage({ mode }: { mode: AuthType }): JSX.Element {
   return (
     <div className="">
       <h1 className="text-blue-500">Hello World</h1>
