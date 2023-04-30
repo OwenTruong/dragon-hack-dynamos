@@ -1,7 +1,9 @@
 import {
+  Box,
   Button,
   Container,
   Grid,
+  Link,
   TextField,
   Typography,
   useTheme,
@@ -11,6 +13,8 @@ import { SERVER_URL } from 'config';
 import React, { useEffect, useRef, useState } from 'react';
 import z from 'zod';
 import { SignUp } from './SignUp';
+import { Login } from './Login';
+import { useNavigate } from 'react-router-dom';
 
 type AuthType = 'signup' | 'login';
 
@@ -28,13 +32,24 @@ const AUTH_PAGE_STYLE = {
   borderRadius: 3,
 };
 
-function Login(): JSX.Element {
-  return <Grid container></Grid>;
-}
-
 export function AuthPage({ mode }: { mode: AuthType }): JSX.Element {
+  const navigate = useNavigate();
   return (
     <Container sx={AUTH_PAGE_STYLE}>
+      <Link
+        style={{
+          position: 'absolute' as 'absolute',
+          top: '15px',
+          left: '15px',
+          cursor: 'pointer',
+          fontSize: '0.85rem',
+        }}
+        onClick={() => {
+          navigate('/');
+        }}
+      >
+        {'Back'}
+      </Link>
       <Grid
         container
         spacing={0}

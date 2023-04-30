@@ -14,65 +14,62 @@ import z from 'zod';
 import { type ChangeInputEvent } from './sharedType';
 import { useNavigate } from 'react-router-dom';
 
-interface SignUpField {
+interface LoginField {
   email: string;
   password: string;
-  confirmPassword: string;
 }
 
-const validateSignUp = (signupObj: SignUpField): boolean => {
+const validateLogin = (loginField: LoginField): boolean => {
   const schema = z.object({
     email: z.string().min(1).email(),
     password: z.string(),
-    confirmPassword: z.string(),
   });
 
-  return schema.safeParse(signupObj).success;
+  return schema.safeParse(loginField).success;
 };
 
-const postNewAccount = async (
-  email: string,
-  password: string
-): Promise<void> => {
+const getAccount = async (email: string, password: string): Promise<void> => {
   // TODO: if result in an error,
-  // const result = await instance.post('/login', {
+  // TODO: should login be get, post or patch?
+  // const result = await instance.get('/login', {
   //   email,
   //   password,
   // });
   // if (result goes bad) return result;
 };
 
-export function SignUp(): JSX.Element {
+export function Login(): JSX.Element {
   const setError = (message: string): void => {
     setErrorFieldState(true);
     setErrorMessage(message);
   };
 
-  const handleSignUp = (data: SignUpField): void => {
-    if (!validateSignUp(data) || data.password !== data.confirmPassword) {
+  const handleLogin = (data: LoginField): void => {
+    if (!validateLogin(data)) {
       setError('Incorrect Email or Password');
       return;
     }
 
-    console.log(signUpRef.current);
-    postNewAccount(data.email, data.password).catch(() => {
-      setError('Sign up failed');
-    });
+    console.log(loginRef.current);
+    getAccount(data.email, data.password)
+      .then((result) => {
+        console.log('set user context and navigate user to root');
+      })
+      .catch(() => {
+        setError('Incorrect Email or Password');
+      });
   };
 
-  const changesignUpRef = (
-    dataType: 'email' | 'password' | 'confirmPassword',
+  const changeLoginRef = (
+    dataType: 'email' | 'password',
     e: ChangeInputEvent
   ): void => {
     switch (dataType) {
       case 'email':
-        signUpRef.current.email = e.target.value;
+        loginRef.current.email = e.target.value;
         break;
       case 'password':
-        signUpRef.current.password = e.target.value;
-        break;
-      case 'confirmPassword':
-        signUpRef.current.confirmPassword = e.target.value;
+        loginRef.current.password = e.target.value;
     }
   };
 
@@ -83,10 +80,9 @@ export function SignUp(): JSX.Element {
 
   const theme = useTheme();
   const navigate = useNavigate();
-  const signUpRef = useRef({
+  const loginRef = useRef({
     email: '',
     password: '',
-    confirmPassword: '',
   });
 
   const [errorFieldState, setErrorFieldState] = useState(false);
@@ -102,15 +98,15 @@ export function SignUp(): JSX.Element {
     <Grid container direction="column" justifyContent="center" gap={1}>
       <Grid item>
         <Typography variant="h5" align="center">
-          Sign Up
+          Login
         </Typography>
       </Grid>
       <Grid item>
         <TextField
           variant="standard"
           label="Email"
-          defaultValue={signUpRef.current.email}
-          onChange={changesignUpRef.bind(null, 'email')}
+          defaultValue={loginRef.current.email}
+          onChange={changeLoginRef.bind(null, 'email')}
         />
       </Grid>
       <Grid item>
@@ -118,17 +114,8 @@ export function SignUp(): JSX.Element {
           variant="standard"
           type="password"
           label="Password"
-          defaultValue={signUpRef.current.password}
-          onChange={changesignUpRef.bind(null, 'password')}
-        />
-      </Grid>
-      <Grid item>
-        <TextField
-          variant="standard"
-          type="password"
-          label="Confirm Password"
-          defaultValue={signUpRef.current.confirmPassword}
-          onChange={changesignUpRef.bind(null, 'confirmPassword')}
+          defaultValue={loginRef.current.password}
+          onChange={changeLoginRef.bind(null, 'password')}
         />
       </Grid>
       {errorFieldState ? (
@@ -143,20 +130,20 @@ export function SignUp(): JSX.Element {
       <Grid item style={{ textAlign: 'right' }}>
         <Link
           onClick={() => {
-            navigate('/login');
+            navigate('/signup');
           }}
           sx={{ cursor: 'pointer', fontSize: '0.90rem' }}
         >
-          Login?
+          Sign Up?
         </Link>
       </Grid>
-      <Grid item style={{ textAlign: 'center', paddingTop: 0 }}>
+      <Grid item style={{ textAlign: 'center', paddingTop: 20 }}>
         <Button
           variant="contained"
-          onClick={handleSignUp.bind(null, signUpRef.current)}
+          onClick={handleLogin.bind(null, loginRef.current)}
           style={{ backgroundColor: theme.palette.primary.light }}
         >
-          Start Adopting
+          Login
         </Button>
       </Grid>
     </Grid>
