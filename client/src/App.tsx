@@ -4,8 +4,7 @@ import React, { useContext, useState } from 'react';
 
 import { PostsPage } from 'pages/PostsPage/PostsPage';
 import { AuthPage } from 'pages/AuthPage/AuthPage';
-import { ShelterRequestPage } from 'pages/ShelterRequestPage';
-import { ShelterAuthPage } from 'pages/ShelterAuthPage';
+import { ShelterAuthPage } from 'pages/ShelterAuthPage/ShelterAuthPage';
 import { PostPage } from 'pages/PostPage/PostPage';
 
 // TODO: zoom embed
@@ -40,7 +39,10 @@ export function App(): JSX.Element {
             <Route path="/" element={<PostsPage />} />
             <Route path="/login" element={<AuthPage mode="login" />} />
             <Route path="/signup" element={<AuthPage mode="signup" />} />
-            <Route path="/shelter" element={<ShelterRequestPage />} />
+            <Route
+              path="/shelter/signup"
+              element={<ShelterAuthPage mode="signup" />}
+            />
             <Route
               path="/shelter/login"
               element={<ShelterAuthPage mode="login" />}
